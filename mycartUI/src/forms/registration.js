@@ -87,6 +87,16 @@ const RegistrationForm = () => {
     }
   }, [isVisibleError]);
 
+  const [revealPassword, setRevealPassword] = useState({
+    password: false,
+    confirmPassword: false,
+  });  
+  const togglePassword = (field) => {
+    setRevealPassword((prevState) => ({
+      ...prevState,
+      [field]: !prevState[field], 
+    }))
+  }
   return ( 
     <div className="h-screen flex items-center justify-center bg-gray-100">  
     <div className={`absolute z-40 h-screen w-screen flex items-center justify-center ${isLoading ? "" : "hidden"}`}>
@@ -174,12 +184,12 @@ const RegistrationForm = () => {
                 required
               />
             </div>
-            <div className="">
+            <div className="relative">
               <label htmlFor="password" className="text-sm">
                 Password:
               </label>
               <input
-                type="password"
+                type={revealPassword.confirmPassword ? "text" : "password"}
                 name="password"
                 placeholder="Password"
                 id="password"
@@ -187,13 +197,14 @@ const RegistrationForm = () => {
                 onChange={handleChange}
                 className="text-sm border-2 border-gray-200 p-2 rounded w-full"
                 required />
+              <span className="absolute right-3 bottom-1 cursor-pointer" onClick={() => togglePassword("confirmPassword")}><ion-icon name={revealPassword.confirmPassword ? "eye-outline" : "eye-off-outline"}></ion-icon></span> 
             </div>
-            <div>
+            <div className="relative">
               <label htmlFor="confirmPassword" className="text-sm">
                 Confirm Password:
               </label>
               <input
-                type="password"
+                type={revealPassword.password ? "text" : "password"}
                 name="confirmPassword"
                 placeholder="Confirm Password"
                 id="confirmPassword"
@@ -202,6 +213,7 @@ const RegistrationForm = () => {
                 className="text-sm border-2 border-gray-200 p-2 rounded w-full"
                 required
               />
+            <span className="absolute right-3 bottom-1 cursor-pointer" onClick={() => togglePassword("password")}><ion-icon name={revealPassword.password ? "eye-outline" : "eye-off-outline"}></ion-icon></span> 
             </div>
             <a href="/" className="text-xs underline text-blue-600 ">Already have an account?</a>
             <div>
