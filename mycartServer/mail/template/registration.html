@@ -1,0 +1,67 @@
+<!-- registration.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Verification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .email-container {
+            background-color: #fff;
+            padding: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .email-container h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .email-container p {
+            color: #555;
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        .email-container a {
+            display: inline-block;
+            background-color: #28a745;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+
+        .email-container a:hover {
+            background-color: #218838;
+        }
+
+        .email-container .note {
+            font-size: 14px;
+            color: #999;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <h1>Verify Your Email</h1>
+        <p>Thank you for registering! To complete your registration, please verify your email address by clicking the button below:</p>
+        <a href="{{verificationUrl}}" target="_blank">Verify My Email</a>
+        <p class="note">If you did not create an account, no further action is required.</p>
+    </div>
+</body>
+</html>
