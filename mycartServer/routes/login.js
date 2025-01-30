@@ -9,7 +9,7 @@ router.post("/", cors(), async (req, res) => {
   const { username, password } = req.body;
   const query = `SELECT Id, Username, Password FROM tblUSers WHERE Username = @username`;
   try {
-    const pool = await conn.connect();
+    const pool =  conn.connect();
     const request = pool.request();
     request.input("username", sql.VarChar, username);
 

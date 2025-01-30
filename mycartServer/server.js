@@ -7,6 +7,7 @@ const registrationRoute = require("./routes/registration");
 const verificationRoute = require("./routes/verify");
 const { sendEmail }  = require('./mail/sendEmailVerificationRegistration');
 const login = require("./routes/login");
+const adminLogin = require("./routes/adminLogin");
 const port = 5000;
 
 app.use(express.json());
@@ -19,9 +20,7 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
-app.get('/', (req, res) => {
-  res.send('Hello World!'); 
-})
+
 app.use("/register/submit", registrationRoute); // this is a route from the other folder the route from that folder should be '/'
 app.use("/verify", verificationRoute);
 app.use("/login/process", login); 
@@ -32,6 +31,7 @@ app.use(
     saveUninitialized: true,
   })
 );
+app.use("/admin/login", adminLogin);
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -48,15 +48,13 @@ app.get(
   }
 );
 
-app.get("/dashboard", ensureAuthenticated, function (req, res) {
-  res.send("Hello, authenticated user!");
-});
-
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   }
   res.redirect("/auth/github");
 }
+
+
 
 app.listen(port);
