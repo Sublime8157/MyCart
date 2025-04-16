@@ -1,6 +1,7 @@
 import React, {useState} from "react";
-import ErrorDisplay from "../components/errorDisplay"
+import { useNavigate } from "react-router-dom"; 
 const adminLogin = () => {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         username: "",
         password: "",
@@ -19,18 +20,18 @@ const adminLogin = () => {
         e.preventDefault();
         setIsLoading(true)
         try {
-            const response = await fetch('http://localhost:5000/admin/login', {
+            const response = await fetch('http://localhost:3000/admin/login', {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData),
             })
-
+            
            const result = await response.json()
            if(response.status === 200) {
             if(result.status === "error") {
                 setError([result])
             } else {
-                console.log("Successfully logged in");
+               navigate('/admin/dashboard')
             }
            }
         } catch (err) {

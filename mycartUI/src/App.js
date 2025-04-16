@@ -4,7 +4,8 @@ import VerificationResult from "./views/verificationRegistrationResult.js";
 import LoginForm from "./forms/login.js";
 import EmailVerification from "./forms/emailVerification.js";
 import Dashboard from "./views/dashboard.js";
-import Admin from "./forms/adminLogin.js";  
+import AdminLogin from "./forms/admin/login.js";  
+import AdminDashboard from "./forms/admin/dashboard.js";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -16,7 +17,8 @@ function App() {
         <Route path="/register" element={<RegistrationForm />} />
         <Route path="/verificationResult" element={<VerificationResult />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/admin" element={<Admin />} />
+        <Route path="/admin" element={<AdminLogin />} />|
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
       </Routes>
     </Router>
   );

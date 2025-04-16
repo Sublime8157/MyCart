@@ -6,7 +6,7 @@ const config = {
     password: process.env.DB_PASS || 'masterkey_2233#',
     server: process.env.DB_HOST || 'localhost',  // Server address
     database: process.env.DB_NAME || 'MyCartV1',
-    port: parseInt(process.env.DB_PORT, 10) || 1433,  // Default MSSQL port
+    port: parseInt(process.env.DB_PORT, 10) || 2019,  // Default MSSQL port
     options: {
         encrypt: true,  // For Azure, set to true
         trustServerCertificate: true // For local development, you can set this to true
